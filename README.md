@@ -18,7 +18,7 @@ Install the auto updater module with `npm install --save @strawbees/desktop-auto
 ## Usage
 
 ```javascript
-const AutoUpdater = require('desktop-autoupdater')
+const AutoUpdater = require('@strawbees/desktop-autoupdater')
 // Current application's package.json
 const pkg = require('./package.json')
 // Instantiate updater with current package. This package must have the version,

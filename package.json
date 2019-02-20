@@ -1,5 +1,5 @@
 {
-  "name": "desktop-autoupdater",
+  "name": "@strawbees/desktop-autoupdater",
   "version": "0.1.0",
   "description": "Auto updater wrapper for Strawbees Desktop apps.",
   "main": "index.js",

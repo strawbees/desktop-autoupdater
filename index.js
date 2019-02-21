@@ -8,16 +8,14 @@ const compareVersions = require('./compareVersions')
 const Event = require('events')
 
 class AutoUpdater extends Event {
-	constructor(pkg, platform, arch) {
+	constructor(pkg, platform, arch, env) {
 		super()
 		this.platform = platform || process.platform
 		this.arch = arch || process.arch
-		// Current node environment (defaults to stage)
-		this.env = process.env.NODE_ENV || 'stage'
 		// Store the config package
 		this.pkg = pkg
 		// URI where to find the latest update information
-		this.updatesManifestUrl = `${this.pkg.autoupdate[this.env]}/${this.platform}/${this.arch}/latest.json`
+		this.updatesManifestUrl = `${this.pkg.autoupdate}/${this.platform}/${this.arch}/latest.json`
 		// URI where the updates will be or have been downloaded
 		this.tempFolder = path.resolve(os.tmpdir(), pkg['executable-name'])
 		// Updater binary name
@@ -98,7 +96,7 @@ class AutoUpdater extends Event {
 	}
 
 	async downloadUpdate(manifest) {
-		const sourceUrl = `${this.pkg.autoupdate[this.env]}/${this.platform}/${this.arch}/${manifest.src.path}`
+		const sourceUrl = `${this.pkg.autoupdate}/${this.platform}/${this.arch}/${manifest.src.path}`
 		this.log('downloading update from:', sourceUrl)
 		return new Promise((resolve, reject) => {
 			const http = /^https/.test(sourceUrl) ? httpsServer : httpServer

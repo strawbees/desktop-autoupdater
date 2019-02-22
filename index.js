@@ -8,7 +8,7 @@ const compareVersions = require('./compareVersions')
 const Event = require('events')
 
 class AutoUpdater extends Event {
-	constructor(pkg, platform, arch, env) {
+	constructor(pkg, platform, arch) {
 		super()
 		this.platform = platform || process.platform
 		this.arch = arch || process.arch
@@ -48,8 +48,7 @@ class AutoUpdater extends Event {
 			// Check if there is something downloaded already
 			if (await this.hasUpdateDownloaded()) {
 				this.log('Update is already downloaded')
-				await this.copyUpdaterBinaryToTemp()
-				await this.runUpdaterBinary()
+				await this.prepareToRestart()
 				this.emit('ready-to-restart')
 				return
 			}
@@ -62,6 +61,11 @@ class AutoUpdater extends Event {
 		} catch(err) {
 			this.emit('error', err)
 		}
+	}
+
+	async prepareToRestart() {
+		await this.copyUpdaterBinaryToTemp()
+		await this.runUpdaterBinary()
 	}
 
 	async getManifest() {

@@ -1,0 +1,18 @@
+{
+  "name": "@strawbees/desktop-autoupdater",
+  "version": "0.1.0",
+  "description": "Auto updater wrapper for Strawbees Desktop apps.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/strawbees/desktop-autoupdater.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/strawbees/desktop-autoupdater/issues"
+  },
+  "homepage": "https://github.com/strawbees/desktop-autoupdater#readme"
+}

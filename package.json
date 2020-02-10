@@ -1,6 +1,6 @@
 {
   "name": "@strawbees/desktop-autoupdater",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Auto updater wrapper for Strawbees Desktop apps.",
   "main": "index.js",
   "scripts": {
